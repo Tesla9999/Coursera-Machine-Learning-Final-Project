@@ -29,7 +29,7 @@ myTest <- train_data[-myTrain_index, ]
 ```
 
 
-There are a lot of "NA" columns and varaiables which cannot be used for fitting, so those data points were removed before the fitting.
+There are a lot of "NA" columns and variables which cannot be used for fitting, so those data points were removed before the fitting.
 
 ```r
 # remove the index, user id, timestamp etc.
@@ -43,7 +43,7 @@ myTest <- myTest[,colSums(is.na(myTest)) == 0]
 blind_test <- blind_test[,colSums(is.na(blind_test)) == 0]
 ```
 
-"classe" variable is checked in the cleaned training data set by histogram. The 5 classes A-E seems to distribute reasonablly even in the data set.
+"classe" variable is checked in the cleaned training data set by histogram. The 5 classes A-E seems to distribute reasonably even in the data set.
 
 
 ```r
@@ -54,7 +54,7 @@ hist(as.numeric(myTrain$classe), col = "red", xlab="classe")
 
 ## Model selection and accuracy analysis
 
-3 models were tested, "rpart", "randomforest" and "gbm", with 5-fold cross validation. To avoid overfitting, the "PCA" option is enabled for data preprocessing. 
+3 models were tested, "rpart", "randomforest" and "gbm", with 5-fold cross validation. To avoid over fitting, the "PCA" option is enabled for data preprocessing. 
 
 
 ```r
@@ -121,7 +121,7 @@ kable(sum_table, format = "markdown", align = 'l')
 
 Therefore, we found randomforest model has the best fitting accuracy, then is gbm. rpart is the worst model in terms of fitting accuracy. Randomforest model is selected for the prediction for the blind test data set. gbm is also a good one with very good accuracy.
 
-The top 20 variables of the randomforest model were ploted here:
+The top 20 variables of the randomforest model were plotted here:
 
 ```r
 plot(varImp(model_rf), top = 20)
@@ -177,7 +177,7 @@ So although randomforest model has a little better accuracy (0.998), it produced
 
 ## Conclusion
 
-Randomforest model has the best accuracy for prediction, ~0.998 on the testing data, within the three models evaluated. However, gbm also produced the same prediciton on the blind test data set.
+Randomforest model has the best accuracy for prediction, ~0.998 on the testing data, within the three models evaluated. However, gbm also produced the same prediction on the blind test data set.
 
 
 ###Thanks!
